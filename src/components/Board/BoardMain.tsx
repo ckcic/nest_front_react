@@ -11,6 +11,7 @@ import { jwtDecode } from "jwt-decode";
 const BoardMain = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+  const [title, setTitle] = useState("");
   const [postList, setList] = useState([
     {
       id: "",
@@ -76,6 +77,12 @@ const BoardMain = () => {
     }
 
     axios
+      .get(`${api_url}board/${id}`)
+      .then((res) => {
+        setTitle(res.data.board_name);
+      })
+
+    axios
       .get(`${api_url}post/${id}/get_all`)
       .then((res) => {
         setList(res.data); 
@@ -90,7 +97,7 @@ const BoardMain = () => {
     <div className="pt-16 min-h-screen flex flex-col bg-gray-100">
       <div className="bg-white relative shadow-md sm:rounded-lg overflow-hidden p-3">
           <h1 className="text-gray-900 text-3xl title-font font-bold mb-1 ml-3">
-            {"as"}
+            {title}
           </h1>
           <div className="flex flex-col md:flex-row items-center justify-end space-y-3 md:space-y-0 md:space-x-4 p-2">
             <div className="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0 ">

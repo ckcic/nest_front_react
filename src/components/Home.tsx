@@ -4,7 +4,6 @@ const Home = () => {
   return (
     <div className="pt-16 min-h-screen flex items-center justify-center bg-white">
       <div className="mt-4">
-        {/* image 폴더 안의 제리감사.gif 파일을 로드합니다. */}
         <img
           src="/image/제리감사.gif"
           alt="제리감사 이미지"
